@@ -1,0 +1,1136 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Introducción con ejemplos a Entity Framework 5 Code First">
+      
+      
+        <meta name="author" content="Serge Tahé">
+      
+      
+        <link rel="canonical" href="https://stahe.github.io/ales-ef5cf-oct-2012/caso-practico-con-oracle-database-express-edition-11g-version-2.html">
+      
+      
+        <link rel="prev" href="caso-practico-con-mysql-5528.html">
+      
+      
+        <link rel="next" href="caso-de-estudio-con-postgresql-921.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>5. Caso práctico con Oracle Database Express Edition 11g Versión 2 - Introducción con ejemplos a Entity Framework 5 Code First</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/focus.css">
+    
+      <link rel="stylesheet" href="stylesheets/bidi.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EBZC3JVJNR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    var siteName = "Introducción con ejemplos a Entity Framework 5 Code First";
+    gtag('config', 'G-EBZC3JVJNR', {
+        'page_title': siteName
+    });
+  </script>
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#5-caso-practico-con-oracle-database-express-edition-11g-version-2" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="Introducción con ejemplos a Entity Framework 5 Code First" class="md-header__button md-logo" aria-label="Introducción con ejemplos a Entity Framework 5 Code First" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Introducción con ejemplos a Entity Framework 5 Code First
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              5. Caso práctico con Oracle Database Express Edition 11g Versión 2
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="Cambiar al modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar al modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="Cambiar al modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar al modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://stahe.github.io/ales-ef5cf-oct-2012" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Introducción con ejemplos a Entity Framework 5 Code First" class="md-nav__button md-logo" aria-label="Introducción con ejemplos a Entity Framework 5 Code First" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Introducción con ejemplos a Entity Framework 5 Code First
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://stahe.github.io/ales-ef5cf-oct-2012" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bienvenidos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="introduccion.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Introducción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="--caso-de-estudio.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.  : caso de estudio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="caso-de-estudio-con-sql-server-express-2012.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Caso de estudio con SQL Server Express 2012
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="caso-practico-con-mysql-5528.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Caso práctico con MySQL 5.5.28
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Caso práctico con Oracle Database Express Edition 11g Versión 2
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="caso-practico-con-oracle-database-express-edition-11g-version-2.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Caso práctico con Oracle Database Express Edition 11g Versión 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#51-instalacion-de-las-herramientas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1. Instalación de las herramientas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#52-creacion-de-la-base-de-datos-a-partir-de-las-entidades" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2. Creación de la base de datos a partir de las entidades
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#53-arquitectura-multicapa-basada-en-ef-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3. Arquitectura multicapa basada en EF 5
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="caso-de-estudio-con-postgresql-921.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Caso de estudio con PostgreSQL 9.2.1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="caso-de-estudio-con-firebird-21.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Caso de estudio con Firebird 2.1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="conclusion.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Conclusión
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<p><span id="refheading39807804107930" name="refheading39807804107930" class="odt-bookmark-anchor"></span></p>
+<h1 id="5-caso-practico-con-oracle-database-express-edition-11g-version-2">5. <span style="color: #365f91">Caso práctico con Oracle Database Express Edition 11g Versión 2</span></h1>
+<p><span id="refheading39809804107930" name="refheading39809804107930" class="odt-bookmark-anchor"></span></p>
+<h2 id="51-instalacion-de-las-herramientas">5.1. <span style="color: #4f81bd">Instalación de las herramientas</span></h2>
+<p><span style="color: #000000">Las herramientas que se deben instalar son las siguientes:</span></p>
+<ul>
+<li>el SGBD: [http://www.oracle.com/technetwork/products/express-edition/downloads/index.html];</li>
+<li>una herramienta de administración: EMS SQL Manager for Oracle Freeware [http://www.sqlmanager.net/fr/products/oracle/manager/download];</li>
+<li>un cliente de Oracle para .NET: ODAC 11.2 Release 5 (11.2.0.3.20) con Oracle Developer Tools para Visual Studio: [http://www.oracle.com/technetwork/developer-tools/visual-studio/downloads/index.html].</li>
+</ul>
+<p><span style="color: #000000">En los siguientes ejemplos, el usuario </span><strong><span style="color: #000000">«system» </span></strong><span style="color: #000000">tiene la contraseña </span><strong><span style="color: #000000">«system</span></strong><span style="color: #000000">».</span></p>
+<p><span style="color: #000000">Iniciemos Oracle [1] y luego la herramienta [SQL Manager Lite for Oracle], con la cual administraremos SGBD y [2].</span></p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000005C3000001B1A67093DE.png" width="680" height="200" style="display:inline-block; margin:4px;width:17.999cm;height:5.283cm;" class="odt-zoomable" data-zoom-src="images/10000000000005C3000001B1A67093DE.png" /></td></tr></table>
+
+<ul>
+<li><span style="color: #000000">En [3], nos conectamos a una base de datos existente;</span></li>
+</ul>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000005D20000018D9A531FD8.png" width="680" height="181" style="display:inline-block; margin:4px;width:17.999cm;height:4.796cm;" class="odt-zoomable" data-zoom-src="images/10000000000005D20000018D9A531FD8.png" /></td></tr></table>
+
+<ul>
+<li><span style="color: #000000">en [4], utilizamos el servicio de Oracle XE para conectarnos;</span></li>
+<li><span style="color: #000000">en [5], indicamos el nombre de la base de datos XE;</span></li>
+<li><span style="color: #000000">en [6], nos conectamos como system / system;</span></li>
+<li><span style="color: #000000">en [7], finalizamos el asistente;</span></li>
+</ul>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000005C60000030432C84331.png" width="680" height="355" style="display:inline-block; margin:4px;width:17.999cm;height:9.4cm;" class="odt-zoomable" data-zoom-src="images/10000000000005C60000030432C84331.png" /></td></tr></table>
+
+<ul>
+<li><span style="color: #000000">en [8], se inicia sesión en la base de datos;</span></li>
+<li><span style="color: #000000">en [9], ya estamos conectados;</span></li>
+<li><span style="color: #000000">como nos hemos conectado como el usuario system / system, que cuenta con derechos ampliados, podremos, por ejemplo, administrar los usuarios [10];</span></li>
+</ul>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000060D000002626FE0FAAF.png" width="680" height="268" style="display:inline-block; margin:4px;width:17.999cm;height:7.087cm;" class="odt-zoomable" data-zoom-src="images/100000000000060D000002626FE0FAAF.png" /></td></tr></table>
+
+<ul>
+<li><span style="color: #000000">en [11], creamos un nuevo usuario;</span></li>
+<li><span style="color: #000000">en [12], se llamará [RDVMEDECINS-EF];</span></li>
+<li><span style="color: #000000">en [13], y tendrá la contraseña </span><em>rdvmedecins</em><span style="color: #000000">;</span></li>
+<li><span style="color: #000000">en [14], se confirma la creación del usuario;</span></li>
+<li><span style="color: #000000">en [15], el usuario ha sido creado;</span></li>
+</ul>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000003C800000299DB42B8C4.png" width="484" height="333" style="display:inline-block; margin:4px;width:12.806cm;height:8.798cm;" class="odt-zoomable" data-zoom-src="images/10000000000003C800000299DB42B8C4.png" /></td></tr></table>
+
+<ul>
+<li><span style="color: #000000">en [16], el usuario [RDVMEDECINS-EF] también es un esquema de base de datos;</span></li>
+<li><span style="color: #000000">en [17], el usuario, tal como se creó, no tiene suficientes derechos. Le otorgamos derechos mediante un script SQL;</span></li>
+</ul>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000005EE000001435CA7173A.png" width="680" height="145" style="display:inline-block; margin:4px;width:17.999cm;height:3.829cm;" class="odt-zoomable" data-zoom-src="images/10000000000005EE000001435CA7173A.png" /></td></tr></table>
+
+<ul>
+<li><span style="color: #000000">en [18], el script ejecutado;</span></li>
+<li><span style="color: #000000">en [19], intentaremos iniciar sesión con la identidad de [RDVMEDECINS-EF] para ver qué puede hacer. Para ello, comenzamos por registrar una nueva base de datos en [EMS Manager];</span></li>
+</ul>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000060D000001A26BF7F79B.png" width="680" height="184" style="display:inline-block; margin:4px;width:17.999cm;height:4.856cm;" class="odt-zoomable" data-zoom-src="images/100000000000060D000001A26BF7F79B.png" /></td></tr></table>
+
+<ul>
+<li><span style="color: #000000">en [19], nos conectamos a través del servicio XE;</span></li>
+<li><span style="color: #000000">en [20], nos conectamos con la identidad RDVMEDECINS-EF / rdvmedecins;</span></li>
+<li><span style="color: #000000">en [21], se asigna un alias que refleja el nombre del usuario que ha iniciado sesión;</span></li>
+<li><span style="color: #000000">en [22], se inicia sesión en Oracle con la información proporcionada;</span></li>
+</ul>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/1000000000000646000002E477777C09.png" width="680" height="313" style="display:inline-block; margin:4px;width:17.999cm;height:8.292cm;" class="odt-zoomable" data-zoom-src="images/1000000000000646000002E477777C09.png" /></td></tr></table>
+
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000003B700000193BFCA089A.png" width="476" height="202" style="display:inline-block; margin:4px;width:12.582cm;height:5.332cm;" class="odt-zoomable" data-zoom-src="images/10000000000003B700000193BFCA089A.png" /></td></tr></table>
+
+<ul>
+<li><span style="color: #000000">En [22], logramos conectarnos;</span></li>
+<li><span style="color: #000000">en [23], intentamos crear una tabla en el esquema [RDVMEDECINS-EF];</span></li>
+<li><span style="color: #000000">en [24], se define una tabla cualquiera;</span></li>
+<li><span style="color: #000000">en [25], se valida su definición;</span></li>
+</ul>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000003BB00000146C860BFC4.png" width="478" height="163" style="display:inline-block; margin:4px;width:12.635cm;height:4.313cm;" class="odt-zoomable" data-zoom-src="images/10000000000003BB00000146C860BFC4.png" /></td></tr></table>
+
+<ul>
+<li><span style="color: #000000">en [26], la tabla se ha creado. La eliminamos;</span></li>
+<li><span style="color: #000000">en [27], ya se ha eliminado.</span></li>
+</ul>
+<p><span style="color: #000000">Ahora que contamos con un usuario con los derechos suficientes, crearemos el proyecto VS 2012, el cual generará las tablas del esquema [RDVMEDECINS-EF] a partir de la definición de las entidades.</span></p>
+<p><span id="refheading39811804107930" name="refheading39811804107930" class="odt-bookmark-anchor"></span></p>
+<h2 id="52-creacion-de-la-base-de-datos-a-partir-de-las-entidades">5.2. <span style="color: #4f81bd">Creación de la base de datos a partir de las entidades</span></h2>
+<p><span style="color: #000000">Comenzamos duplicando la carpeta del proyecto [RdvMedecins-SqlServer-01] en [RdvMedecins-Oracle-01] y [1]:</span></p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000005A80000030DD6C4353D.png" width="680" height="367" style="display:inline-block; margin:4px;width:17.999cm;height:9.708cm;" class="odt-zoomable" data-zoom-src="images/10000000000005A80000030DD6C4353D.png" /></td></tr></table>
+
+<ul>
+<li><span style="color: #000000">en [2]; en VS 2012, eliminamos el proyecto [RdvMedecins-SqlServer-01] de la solución;</span></li>
+</ul>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000062200000281943D6B13.png" width="680" height="278" style="display:inline-block; margin:4px;width:17.999cm;height:7.348cm;" class="odt-zoomable" data-zoom-src="images/100000000000062200000281943D6B13.png" /></td></tr></table>
+
+<ul>
+<li><span style="color: #000000">en [3], el proyecto se ha eliminado;</span></li>
+<li><span style="color: #000000">en [4], se agrega otro. Este se encuentra en la carpeta [RdvMedecins-Oracle-01] que creamos anteriormente;</span></li>
+</ul>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/1000000000000320000001166977BE7A.png" width="400" height="139" style="display:inline-block; margin:4px;width:10.583cm;height:3.678cm;" class="odt-zoomable" data-zoom-src="images/1000000000000320000001166977BE7A.png" /></td></tr></table>
+
+<ul>
+<li><span style="color: #000000">en [5], el proyecto cargado se llama [RdvMedecins-SqlServer-01];</span></li>
+<li><span style="color: #000000">en [6], cambiamos su nombre a [RdvMedecins-Oracle-01]</span></li>
+</ul>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000060A0000023E257F800A.png" width="680" height="253" style="display:inline-block; margin:4px;width:17.999cm;height:6.682cm;" class="odt-zoomable" data-zoom-src="images/100000000000060A0000023E257F800A.png" /></td></tr></table>
+
+<ul>
+<li><span style="color: #000000">en [7], se agrega otro proyecto a la solución. Este se toma de la carpeta [RdvMedecins-SqlServer-01] del proyecto que hemos  eliminado de la solución anteriormente;</span></li>
+<li><span style="color: #000000">en [8], el proyecto [RdvMedecins-SqlServer-01] se ha reintegrado a la solución.</span></li>
+</ul>
+<p><span style="color: #000000">El proyecto [RdvMedecins-Oracle-01] es idéntico al proyecto [RdvMedecins-SqlServer-01]. Necesitamos hacer algunas modificaciones. En [App.config], vamos a modificar la cadena de conexión y el [DbProviderFactory], que debemos adaptar a cada SGBD.</span></p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-text">
+<span class="odt-code-line"><span class="odt-code-line-content">&lt;!-- cadena de conexión a la base de datos --&gt;</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">  &lt;</span><span style="color:#a31515">connectionStrings</span><span style="color:#0000ff">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">    &lt;</span><span style="color:#a31515">add</span><span style="color:#0000ff"> </span><span style="color:#ff0000">name</span><span style="color:#0000ff">=</span><span style="color:#000000">&quot;</span><span style="color:#0000ff">monContexte</span><span style="color:#000000">&quot;</span><span style="color:#0000ff"> </span><span style="color:#ff0000">connectionString</span><span style="color:#0000ff">=</span><span style="color:#000000">&quot;</span><span style="color:#0000ff">Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=XE)));User Id=RDVMEDECINS-EF;Password=rdvmedecins;</span><span style="color:#000000">&quot;</span><span style="color:#0000ff"> </span><span style="color:#ff0000">providerName</span><span style="color:#0000ff">=</span><span style="color:#000000">&quot;</span><span style="color:#0000ff">Oracle.DataAccess.Client</span><span style="color:#000000">&quot;</span><span style="color:#0000ff"> /&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">  &lt;/</span><span style="color:#a31515">connectionStrings</span><span style="color:#0000ff">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  <span style="color:#0000ff">&lt;!-- el proveedor de fábrica --&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">  &lt;</span><span style="color:#a31515">system.data</span><span style="color:#0000ff">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">    &lt;</span><span style="color:#a31515">DbProviderFactories</span><span style="color:#0000ff">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">      &lt;</span><span style="color:#a31515">remove</span><span style="color:#0000ff"> </span><span style="color:#ff0000">invariant</span><span style="color:#0000ff">=</span><span style="color:#000000">&quot;</span><span style="color:#0000ff">Oracle.DataAccess.Client</span><span style="color:#000000">&quot;</span><span style="color:#0000ff"> /&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">      &lt;</span><span style="color:#a31515">add</span><span style="color:#0000ff"> </span><span style="color:#ff0000">name</span><span style="color:#0000ff">=</span><span style="color:#000000">&quot;</span><span style="color:#0000ff">Oracle Data Provider for .NET</span><span style="color:#000000">&quot;</span><span style="color:#0000ff"> </span><span style="color:#ff0000">invariant</span><span style="color:#0000ff">=</span><span style="color:#000000">&quot;</span><span style="color:#0000ff">Oracle.DataAccess.Client</span><span style="color:#000000">&quot;</span><span style="color:#0000ff"> </span><span style="color:#ff0000">description</span><span style="color:#0000ff">=</span><span style="color:#000000">&quot;</span><span style="color:#0000ff">Oracle Data Provider for .NET</span><span style="color:#000000">&quot;</span><span style="color:#0000ff"> </span><span style="color:#ff0000">type</span><span style="color:#0000ff">=</span><span style="color:#000000">&quot;</span><span style="color:#0000ff">Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=4.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342</span><span style="color:#000000">&quot;</span><span style="color:#0000ff"> /&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">    &lt;/</span><span style="color:#a31515">DbProviderFactories</span><span style="color:#0000ff">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">  &lt;/</span><span style="color:#a31515">system.data</span><span style="color:#0000ff">&gt;</span></span></span>
+</code></pre></div>
+
+<ul>
+<li><span style="color: #000000">línea 3: el usuario y su contraseña;</span></li>
+<li><span style="color: #000000">líneas 6-11: el </span><em>DbProviderFactory</em><span style="color: #000000">. La línea 9 hace referencia a un DLL y un [Oracle.DataAccess] que no tenemos. Lo obtenemos con NuGet y [1]:</span></li>
+</ul>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/1000000000000608000001E366F52AEE.png" width="680" height="213" style="display:inline-block; margin:4px;width:17.999cm;height:5.63cm;" class="odt-zoomable" data-zoom-src="images/1000000000000608000001E366F52AEE.png" /></td></tr></table>
+
+<ul>
+<li><span style="color: #000000">en [2], en el campo de búsqueda escribimos la palabra clave </span><em>oracle</em><span style="color: #000000">;</span></li>
+<li><span style="color: #000000">en [3], se selecciona el paquete [Oracle Data Provider] que corresponde. Se trata del conector ADO.NET de Oracle;</span></li>
+</ul>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000003DB0000025DD7AC34E2.png" width="494" height="303" style="display:inline-block; margin:4px;width:13.058cm;height:8.005cm;" class="odt-zoomable" data-zoom-src="images/10000000000003DB0000025DD7AC34E2.png" /></td></tr></table>
+
+<ul>
+<li><span style="color: #000000">en [4], la referencia agregada;</span></li>
+<li><span style="color: #000000">en [5], en [App.config], hay que poner la versión correcta de DLL. Se encuentra en sus propiedades.</span></li>
+</ul>
+<p>En el archivo [Entites.cs], hay que adaptar el esquema de las tablas que se van a generar. <span style="color: #000000">El esquema utilizado es el nombre del usuario propietario de las tablas.</span></p>
+<div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-csharp">
+<span class="odt-code-line"><span class="odt-code-line-content">  [<span style="color:#2b91af">Table</span>(<span style="color:#a31515">&quot;MEDECINS&quot;</span>, Schema = <span style="color:#a31515">&quot;RDVMEDECINS-EF&quot;</span>)]</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#0000ff">public</span><span style="color:#000000"> </span><span style="color:#0000ff">class</span><span style="color:#000000"> </span><span style="color:#2b91af">Medecin</span><span style="color:#000000"> : </span><span style="color:#2b91af">Personne</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  {...}</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  [<span style="color:#2b91af">Table</span>(<span style="color:#a31515">&quot;CLIENTS&quot;</span>, Schema = <span style="color:#a31515">&quot;RDVMEDECINS-EF&quot;</span>)]</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#0000ff">public</span><span style="color:#000000"> </span><span style="color:#0000ff">class</span><span style="color:#000000"> </span><span style="color:#2b91af">Client</span><span style="color:#000000"> : </span><span style="color:#2b91af">Personne</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  {...}</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  [<span style="color:#2b91af">Table</span>(<span style="color:#a31515">&quot;RVS&quot;</span>, Schema = <span style="color:#a31515">&quot;RDVMEDECINS-EF&quot;</span>)]</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#0000ff">public</span><span style="color:#000000"> </span><span style="color:#0000ff">class</span><span style="color:#000000"> </span><span style="color:#2b91af">Rv</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  {...}</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  [<span style="color:#2b91af">Table</span>(<span style="color:#a31515">&quot;CRENEAUX&quot;</span>, Schema = <span style="color:#a31515">&quot;RDVMEDECINS-EF&quot;</span>)]</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#0000ff">public</span><span style="color:#000000"> </span><span style="color:#0000ff">class</span><span style="color:#000000"> </span><span style="color:#2b91af">Creneau</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  {...}</span></span>
+</code></pre></div>
+
+<p><span style="color: #000000">Configuramos la ejecución del proyecto:</span></p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000031C0000011508FAFA0C.png" width="398" height="139" style="display:inline-block; margin:4px;width:10.53cm;height:3.665cm;" class="odt-zoomable" data-zoom-src="images/100000000000031C0000011508FAFA0C.png" /></td></tr></table>
+
+<ul>
+<li><span style="color: #000000">en [1], le damos otro nombre al ensamblado que se generará;</span></li>
+<li><span style="color: #000000">en [2], así como otro espacio de nombres por defecto;</span></li>
+<li><span style="color: #000000">en [3], se designa el programa que se ejecutará.</span></li>
+</ul>
+<p><span style="color: #000000">En esta etapa, no hay errores de compilación. Ejecutemos el programa [CreateDB_01]. Se produce la siguiente excepción:</span></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>Exception non gérée : System.Data.MetadataException: Le schéma spécifié n&#39;est pas valide. Erreurs :
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>(11,6) : erreur 0040: Le type rowversion n&#39;est pas qualifié avec un espace de noms ou un alias. Seuls les types primitifs peuvent être utilisés sans qualification.
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a>(23,6) : erreur 0040: Le type rowversion n&#39;est pas qualifié avec un espace de noms ou un alias. Seuls les types primitifs peuvent être utilisés sans qualification.
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a>(33,6) : erreur 0040: Le type rowversion n&#39;est pas qualifié avec un espace de noms ou un alias. Seuls les types primitifs peuvent être utilisés sans qualification.
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a>(43,6) : erreur 0040: Le type rowversion n&#39;est pas qualifié avec un espace de noms ou un alias. Seuls les types primitifs peuvent être utilisés sans qualification.
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a>   à System.Data.Metadata.Edm.StoreItemCollection.Loader.ThrowOnNonWarningErrors
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a>()
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a>   ...
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a>   à RdvMedecins_01.CreateDB_01.Main(String[] args) dans d:\data\istia-1213\c#\d
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a>vp\Entity Framework\RdvMedecins\RdvMedecins-Oracle-01\CreateDB_01.cs:ligne 15
+</code></pre></div></td></tr></table></div>
+<p><span style="color: #000000">Recordamos haber tenido el mismo error con MySQL. Esto se debe al tipo del campo </span><em><span style="color: #000000">Timestamp </span></em><span style="color: #000000">de las entidades. Realizamos la misma modificación. En las entidades, reemplazamos las tres líneas</span></p>
+<div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-text">
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    [</span><span style="color:#2b91af">Column</span><span style="color:#000000">(</span><span style="color:#a31515">&quot;TIMESTAMP&quot;</span><span style="color:#000000">)]</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    [</span><span style="color:#2b91af">Timestamp</span><span style="color:#000000">]</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#0000ff">public</span><span style="color:#000000"> </span><span style="color:#0000ff">byte</span><span style="color:#000000">[] Timestamp { </span><span style="color:#0000ff">get</span><span style="color:#000000">; </span><span style="color:#0000ff">set</span><span style="color:#000000">; }</span></span></span>
+</code></pre></div>
+
+<p><span style="color: #000000"> por las siguientes:</span></p>
+<div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-text">
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    [</span><span style="color:#2b91af">ConcurrencyCheck</span><span style="color:#000000">]</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    [</span><span style="color:#2b91af">Column</span><span style="color:#000000">(</span><span style="color:#a31515">&quot;VERSIONING&quot;</span><span style="color:#000000">)]</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#0000ff">public</span><span style="color:#000000"> </span><span style="color:#2b91af">int</span><span style="color:#000000">? Versioning { </span><span style="color:#0000ff">get</span><span style="color:#000000">; </span><span style="color:#0000ff">set</span><span style="color:#000000">; }</span></span></span>
+</code></pre></div>
+
+<p><span style="color: #000000">Por lo tanto, cambiamos el tipo de la columna de </span><strong><span style="color: #000000">byte[] </span></strong><span style="color: #000000">a </span><strong><span style="color: #000000">int?</span></strong><span style="color: #000000">. Recordemos que tanto para SQL Server como para MySQL, la columna de las tablas que se utilizaba para gestionar la concurrencia de acceso recibía un valor de SGBD cada vez que se insertaba o modificaba una fila. A partir de ahora, utilizaremos un campo de entidad que será un entero. En el SGBD, utilizaremos procedimientos almacenados para incrementar este entero en una unidad cada vez que se inserte o modifique una fila.</span></p>
+<p><span style="color: #000000">Realizamos la modificación anterior para las cuatro entidades y luego volvemos a ejecutar la aplicación. Entonces obtenemos el siguiente error:</span></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span>
+<span class="normal"><a href="#__codelineno-1-3">3</a></span>
+<span class="normal"><a href="#__codelineno-1-4">4</a></span>
+<span class="normal"><a href="#__codelineno-1-5">5</a></span>
+<span class="normal"><a href="#__codelineno-1-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="nx">Exception</span><span class="w"> </span><span class="nx">non</span><span class="w"> </span><span class="nx">gérée</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="nx">System</span><span class="p">.</span><span class="nx">Data</span><span class="p">.</span><span class="nx">DataException</span><span class="o">:</span><span class="w"> </span><span class="nx">An</span><span class="w"> </span><span class="nx">exception</span><span class="w"> </span><span class="nx">occurred</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="nx">initializing</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">database</span><span class="p">.</span><span class="w"> </span><span class="nx">See</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">InnerException</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nx">details</span><span class="p">.</span><span class="w"> </span><span class="o">---&gt;</span><span class="w"> </span><span class="nx">System</span><span class="p">.</span><span class="nx">Data</span><span class="p">.</span><span class="nx">ProviderIncompatibleException</span><span class="o">:</span><span class="w"> </span><span class="nx">DeleteDatabase</span><span class="w"> </span><span class="nx">n</span><span class="err">&#39;</span><span class="nx">est</span><span class="w"> </span><span class="nx">pas</span><span class="w"> </span><span class="nx">pris</span><span class="w"> </span><span class="nx">en</span><span class="w"> </span><span class="nx">charge</span><span class="w"> </span><span class="nx">par</span><span class="w"> </span><span class="nx">le</span><span class="w"> </span><span class="nx">fournisseur</span><span class="p">.</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="w">   </span><span class="nx">à</span><span class="w"> </span><span class="nx">System</span><span class="p">.</span><span class="nx">Data</span><span class="p">.</span><span class="nx">Common</span><span class="p">.</span><span class="nx">DbProviderServices</span><span class="p">.</span><span class="nx">DbDeleteDatabase</span><span class="p">(</span><span class="nx">DbConnection</span><span class="w"> </span><span class="nx">connection</span><span class="p">,</span><span class="w"> </span><span class="nx">Nullable</span><span class="sb">`1 commandTimeout, StoreItemCollection storeItemCollection)</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="sb">   ...</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="sb">   à System.Data.Entity.Internal.LazyInternalContext.InitializeDatabase()</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="sb">   à RdvMedecins_01.CreateDB_01.Main(String[] args) dans d:\data\istia-1213\c#\d</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="sb">vp\Entity Framework\RdvMedecins\RdvMedecins-Oracle-01\CreateDB_01.cs:ligne 15</span>
+</code></pre></div></td></tr></table></div>
+<p><span style="color: #000000">La línea 1 indica que el conector ADO.NET de Oracle no puede eliminar la base de datos existente. Recordemos lo que está sucediendo. El código de [CreateDB_01.cs] es el siguiente:</span></p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-csharp">
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">using</span> System;</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">using</span><span style="color:#000000"> System.Data.Entity;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">using</span><span style="color:#000000"> RdvMedecins.Models;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">namespace</span><span style="color:#000000"> RdvMedecins_01</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">{</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">  </span><span style="color:#0000ff">class</span><span style="color:#000000"> </span><span style="color:#2b91af">CreateDB_01</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  {</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">    </span><span style="color:#0000ff">static</span><span style="color:#000000"> </span><span style="color:#0000ff">void</span><span style="color:#000000"> Main(</span><span style="color:#0000ff">string</span><span style="color:#000000">[] args)</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    {</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">      <span style="color:#000000">// se crea la base de datos</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">      </span><span style="color:#2b91af">Database</span><span style="color:#000000">.SetInitializer(</span><span style="color:#0000ff">new</span><span style="color:#000000"> </span><span style="color:#2b91af">RdvMedecinsInitializer</span><span style="color:#000000">());</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">      </span><span style="color:#0000ff">using</span><span style="color:#000000"> (</span><span style="color:#0000ff">var</span><span style="color:#000000"> context = </span><span style="color:#0000ff">new</span><span style="color:#000000"> </span><span style="color:#2b91af">RdvMedecinsContext</span><span style="color:#000000">())</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">      {</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        context.Database.Initialize(</span><span style="color:#0000ff">false</span><span style="color:#000000">);</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">      }</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">    }</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  }</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">}</span></span>
+</code></pre></div>
+
+<p><span style="color: #000000">La línea 15 inicia la ejecución de la clase [RdvMedecinsInitializer] (línea 12). Esta es la siguiente:</span></p>
+<div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-csharp">
+<span class="odt-code-line"><span class="odt-code-line-content">  <span style="color:#0000ff">public</span> <span style="color:#0000ff">class</span> <span style="color:#2b91af">RdvMedecinsInitializer</span> : <span style="color:#2b91af">DropCreateDatabaseAlways</span>&lt;<span style="color:#2b91af">RdvMedecinsContext</span>&gt;</span></span>
+</code></pre></div>
+
+<p><span style="color: #000000">Se deriva de la clase [DropCreateDatabaseAlways], que intenta eliminar y luego volver a crear la base de datos. Modificamos la definición de la clase de la siguiente manera:</span></p>
+<div class="odt-code-rich" data-linenums="false" style="counter-reset: odtline 0;"><pre><code class="language-csharp">
+<span class="odt-code-line"><span class="odt-code-line-content">  <span style="color:#0000ff">public</span> <span style="color:#0000ff">class</span> <span style="color:#2b91af">RdvMedecinsInitializer</span> : <span style="color:#2b91af">CreateDatabaseIfNotExists</span>&lt;<span style="color:#2b91af">RdvMedecinsContext</span>&gt;</span></span>
+</code></pre></div>
+
+<p><span style="color: #000000">La base de datos solo se crea si no existe. Volvemos a ejecutar [CreateDB_01.cs] y ya no hay errores. Sin embargo, en [EMS Manager], observamos que la base de datos [RDVMEDECINS-EF] se ha quedado vacía. Como EF 5 encontró una base de datos existente, no hizo nada. Solo realiza alguna acción si la base de datos no existe. A partir de ahí, nos encontramos en un círculo vicioso. De hecho, la cadena de conexión para SGBD es la siguiente:</span></p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-text">
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">  &lt;</span><span style="color:#a31515">connectionStrings</span><span style="color:#0000ff">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">    &lt;</span><span style="color:#a31515">add</span><span style="color:#0000ff"> </span><span style="color:#ff0000">name</span><span style="color:#0000ff">=</span><span style="color:#000000">&quot;</span><span style="color:#0000ff">monContexte</span><span style="color:#000000">&quot;</span><span style="color:#0000ff"> </span><span style="color:#ff0000">connectionString</span><span style="color:#0000ff">=</span><span style="color:#000000">&quot;</span><span style="color:#0000ff">Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=XE)));User Id=RDVMEDECINS-EF;Password=rdvmedecins;</span><span style="color:#000000">&quot;</span><span style="color:#0000ff"> </span><span style="color:#ff0000">providerName</span><span style="color:#0000ff">=</span><span style="color:#000000">&quot;</span><span style="color:#0000ff">Oracle.DataAccess.Client</span><span style="color:#000000">&quot;</span><span style="color:#0000ff"> /&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">&lt;/</span><span style="color:#a31515">connectionStrings</span><span style="color:#0000ff">&gt;</span></span></span>
+</code></pre></div>
+
+<p><span style="color: #000000">En la línea 2, la cadena de conexión no utiliza el nombre de una base de datos, sino el nombre de un usuario. Este debe existir.</span></p>
+<p><span style="color: #000000">Por lo tanto, nos vemos obligados a crear la base de datos [RDVMEDECINS-EF] manualmente con la herramienta [EMS Manager for Oracle]. No describiremos todos los pasos, sino solo los más importantes.</span></p>
+<p><span style="color: #000000">La base de datos de Oracle será la siguiente:</span></p>
+<p><u><strong><span style="color: #000000">Las tablas</span></strong></u></p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000005E2000001802EBCF884.png" width="680" height="173" style="display:inline-block; margin:4px;width:17.999cm;height:4.588cm;" class="odt-zoomable" data-zoom-src="images/10000000000005E2000001802EBCF884.png" /></td></tr></table>
+
+<p><span style="color: #000000">Las distintas tablas tienen las claves primarias y externas que tenían esas mismas tablas en los dos ejemplos anteriores. Las claves externas tienen, en particular, el atributo ON, DELETE y CASCADE.</span></p>
+<p><u><strong><span style="color: #000000">Las secuencias</span></strong></u></p>
+<p><span style="color: #000000">Aquí se han creado secuencias de Oracle. Son generadores de números consecutivos. Hay 5: [1].</span></p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000052D000001B3F53C6CC5.png" width="663" height="218" style="display:inline-block; margin:4px;width:17.53cm;height:5.756cm;" class="odt-zoomable" data-zoom-src="images/100000000000052D000001B3F53C6CC5.png" /></td></tr></table>
+
+<ul>
+<li><span style="color: #000000">En [2], vemos las propiedades de la secuencia [SEQUENCE_CLIENTS]. Genera números consecutivos de 1 en 1, desde 1 hasta un valor muy grande.</span></li>
+</ul>
+<p><span style="color: #000000">Todas las secuencias siguen el mismo modelo. </span></p>
+<ul>
+<li><span style="color: #000000">[SEQUENCE_CLIENTS] se utilizará para generar la clave primaria de la tabla [CLIENTS];</span></li>
+<li><span style="color: #000000">[SEQUENCE_MEDECINS] se utilizará para generar la clave primaria de la tabla [MEDECINS];</span></li>
+<li><span style="color: #000000">[SEQUENCE_CRENEAUX] se utilizará para generar la clave primaria de la tabla [CRENEAUX];</span></li>
+<li><span style="color: #000000">[SEQUENCE_RVS] se utilizará para generar la clave primaria de la tabla [RVS];</span></li>
+<li><span style="color: #000000">[SEQUENCE_VERSIONS] se utilizará para generar los valores de las columnas [VERSIONING] de todas las tablas.</span></li>
+</ul>
+<p><u><strong><span style="color: #000000">Los disparadores</span></strong></u></p>
+<p><span style="color: #000000">Un disparador es un procedimiento que ejecuta el SGBD antes o después de un evento (inserción, modificación, eliminación) en una tabla. Tenemos 8 [1]:</span></p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/1000000000000198000000B13CFBF36E.png" width="286" height="124" style="display:inline-block; margin:4px;width:7.56cm;height:3.281cm;" class="odt-zoomable" data-zoom-src="images/1000000000000198000000B13CFBF36E.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<p><span style="color: #000000">Veamos el código DDL del disparador [TRIGGER_PK_CLIENTS] que alimenta la clave primaria de la tabla [CLIENTS]:</span></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span>
+<span class="normal"><a href="#__codelineno-2-3">3</a></span>
+<span class="normal"><a href="#__codelineno-2-4">4</a></span>
+<span class="normal"><a href="#__codelineno-2-5">5</a></span>
+<span class="normal"><a href="#__codelineno-2-6">6</a></span>
+<span class="normal"><a href="#__codelineno-2-7">7</a></span>
+<span class="normal"><a href="#__codelineno-2-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">TRIGGER</span><span class="w"> </span><span class="ss">&quot;RDVMEDECINS-EF&quot;</span><span class="p">.</span><span class="n">TRIGGER_PK_CLIENTS</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="w"> </span><span class="k">BEFORE</span><span class="w"> </span><span class="k">INSERT</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="ss">&quot;RDVMEDECINS-EF&quot;</span><span class="p">.</span><span class="n">CLIENTS</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="k">REFERENCING</span><span class="w"> </span><span class="k">NEW</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">NEW</span><span class="w"> </span><span class="k">OLD</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">OLD</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">EACH</span><span class="w"> </span><span class="k">ROW</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="k">BEGIN</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="w">        </span><span class="k">SELECT</span><span class="w"> </span><span class="n">SEQUENCE_CLIENTS</span><span class="p">.</span><span class="n">NEXTVAL</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="p">:</span><span class="k">new</span><span class="p">.</span><span class="n">ID</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">DUAL</span><span class="p">;</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="k">END</span><span class="p">;</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="o">/</span>
+</code></pre></div></td></tr></table></div>
+<ul>
+<li><span style="color: #000000">líneas 1-5: antes de cada operación INSERT en la tabla [CLIENTS];</span></li>
+<li><span style="color: #000000">línea 6: la columna [ID] tomará el siguiente valor de la secuencia [SEQUENCE_CLIENTS]. De esta manera, la clave primaria tendrá valores consecutivos proporcionados por la secuencia.</span></li>
+</ul>
+<p><span style="color: #000000">Los disparadores [TRIGGER_PK_MEDECINS, TRIGGER_PK_CRENEAUX, TRIGGER_PK_RVS] son similares.</span></p>
+<p><span style="color: #000000">Veamos el código DDL del disparador [TRIGGER_VERSIONS_CLIENTS] que alimenta la columna [VERSIONING] de la tabla [CLIENTS]:</span></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-3-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-3-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-3-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-3-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-3-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">TRIGGER</span><span class="w"> </span><span class="ss">&quot;RDVMEDECINS-EF&quot;</span><span class="p">.</span><span class="n">TRIGGER_VERSION_CLIENTS</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="w"> </span><span class="k">BEFORE</span><span class="w"> </span><span class="k">INSERT</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">UPDATE</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="w"> </span><span class="k">OF</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="w">  </span><span class="k">VERSIONING</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="ss">&quot;RDVMEDECINS-EF&quot;</span><span class="p">.</span><span class="n">CLIENTS</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="k">REFERENCING</span><span class="w"> </span><span class="k">NEW</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">NEW</span><span class="w"> </span><span class="k">OLD</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">OLD</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">EACH</span><span class="w"> </span><span class="k">ROW</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="k">BEGIN</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="w">        </span><span class="k">SELECT</span><span class="w"> </span><span class="n">SEQUENCE_VERSIONS</span><span class="p">.</span><span class="n">NEXTVAL</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="p">:</span><span class="k">new</span><span class="p">.</span><span class="k">VERSIONING</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">DUAL</span><span class="p">;</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="k">END</span><span class="p">;</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="o">/</span>
+</code></pre></div></td></tr></table></div>
+<ul>
+<li><span style="color: #000000">líneas 1-2: antes de cada operación INSERT o UPDATE en la tabla [CLIENTS];</span></li>
+<li><span style="color: #000000">línea 8: la columna [VERSIONING] tomará el siguiente valor de la secuencia [SEQUENCE_VERSIONS]. De este modo, la columna [VERSIONING] tendrá valores consecutivos proporcionados por la secuencia.</span></li>
+</ul>
+<p><span style="color: #000000">Los disparadores [TRIGGER_VERSION_MEDECINS, TRIGGER_VERSION_CRENEAUX, TRIGGER_VERSION_RVS] funcionan de manera similar. Las cuatro columnas [VERSIONING] obtienen sus valores de la misma secuencia.</span></p>
+<p><span style="color: #000000">El script para generar las tablas de la base de datos Oracle [RDVMEDECINS-EF] se ha colocado en la carpeta [RdvMedecins / databases / oracle]. El lector podrá cargarlo y ejecutarlo para crear sus tablas.</span></p>
+<p><span style="color: #000000">Una vez hecho esto, se pueden ejecutar los distintos programas del proyecto. Estos arrojan los mismos resultados que con SQL Server, excepto el programa [ModifyDetachedEntities], que falla por la misma razón por la que había fallado con MySQL. El problema se resuelve de la misma manera. Basta con copiar el programa [ModifyDetachedEntities] del proyecto [RdvMedecins-MySQL-01] al proyecto [RdvMedecins-Oracle-01]. Entonces surge un nuevo problema:</span></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<span class="normal"><a href="#__codelineno-4-2">2</a></span>
+<span class="normal"><a href="#__codelineno-4-3">3</a></span>
+<span class="normal"><a href="#__codelineno-4-4">4</a></span>
+<span class="normal"><a href="#__codelineno-4-5">5</a></span>
+<span class="normal"><a href="#__codelineno-4-6">6</a></span>
+<span class="normal"><a href="#__codelineno-4-7">7</a></span>
+<span class="normal"><a href="#__codelineno-4-8">8</a></span>
+<span class="normal"><a href="#__codelineno-4-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="mi">1</span><span class="c1">-----------------------------</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="n">Client</span><span class="w"> </span><span class="p">[</span><span class="mi">206</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="mi">616</span><span class="p">]</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="mi">2</span><span class="c1">-----------------------------</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="n">Client</span><span class="w"> </span><span class="p">[</span><span class="mi">206</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="mi">617</span><span class="p">]</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a>
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="k">Exception</span><span class="w"> </span><span class="n">non</span><span class="w"> </span><span class="n">gérée</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="k">System</span><span class="p">.</span><span class="k">Data</span><span class="p">.</span><span class="n">Entity</span><span class="p">.</span><span class="n">Infrastructure</span><span class="p">.</span><span class="n">DbUpdateConcurrencyException</span><span class="p">:</span><span class="w"> </span><span class="n">Une</span><span class="w"> </span><span class="n">instruction</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">mise</span><span class="w"> </span><span class="err">à</span><span class="w"> </span><span class="n">jour</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="err">&#39;</span><span class="n">insertion</span><span class="w"> </span><span class="n">ou</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">suppression</span><span class="w"> </span><span class="n">dans</span><span class="w"> </span><span class="n">le</span><span class="w"> </span><span class="n">magasin</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">affecté</span><span class="w"> </span><span class="n">un</span><span class="w"> </span><span class="n">nombre</span><span class="w"> </span><span class="n">inattendu</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">lignes</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="w"> </span><span class="n">Des</span><span class="w"> </span><span class="n">entités</span><span class="w"> </span><span class="n">ont</span><span class="w"> </span><span class="n">peut</span><span class="o">-</span><span class="err">ê</span><span class="n">tre</span><span class="w"> </span><span class="err">é</span><span class="n">té</span><span class="w"> </span><span class="n">modifiées</span><span class="w"> </span><span class="n">ou</span><span class="w"> </span><span class="n">supprimées</span><span class="w"> </span><span class="n">depuis</span><span class="w"> </span><span class="n">leur</span><span class="w"> </span><span class="n">chargement</span><span class="p">.</span><span class="w"> </span><span class="n">Actualisez</span><span class="w"> </span><span class="n">les</span><span class="w"> </span><span class="n">entrées</span><span class="w"> </span><span class="n">ObjectStateManager</span><span class="p">.</span><span class="w"> </span><span class="c1">---&gt; System.Data.OptimisticConcurrencyException: Una instrucción de actualización, inserción o eliminación en el almacén afectó a un número inesperado de filas (0). Es posible que se hayan modificado o eliminado entidades desde que se cargaron. Actualice las entradas ObjectStateManager.</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="w">   </span><span class="p">...</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="w">   </span><span class="err">à</span><span class="w"> </span><span class="n">RdvMedecins_01</span><span class="p">.</span><span class="n">ModifyDetachedEntities</span><span class="p">.</span><span class="n">Main</span><span class="p">(</span><span class="n">String</span><span class="p">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="n">dans</span><span class="w"> </span><span class="n">d</span><span class="p">:</span><span class="err">\</span><span class="k">data</span><span class="err">\</span><span class="n">istia</span><span class="o">-</span><span class="mi">1213</span><span class="err">\</span><span class="k">c</span><span class="o">#</span><span class="err">\</span><span class="n">dvp</span><span class="err">\</span><span class="n">Entity</span><span class="w"> </span><span class="n">Framework</span><span class="err">\</span><span class="n">RdvMedecins</span><span class="err">\</span><span class="n">RdvMedecins</span><span class="o">-</span><span class="n">Oracle</span><span class="o">-</span><span class="mi">01</span><span class="err">\</span><span class="n">ModifyDetachedE</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9"></a><span class="n">ntities</span><span class="p">.</span><span class="n">cs</span><span class="p">:</span><span class="n">ligne</span><span class="w"> </span><span class="mi">56</span>
+</code></pre></div></td></tr></table></div>
+<ul>
+<li><span style="color: #000000">líneas 1-4: el cliente desconectado sí se actualizó;</span></li>
+<li><span style="color: #000000">línea 6: una excepción conocida. Es la que se produce cuando se intenta modificar una entidad sin tener la versión correcta. Sin embargo, en este caso, no se quería modificar, sino eliminar la entidad:</span></li>
+</ul>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-csharp">
+<span class="odt-code-line"><span class="odt-code-line-content">      // eliminación de entidad fuera de contexto</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">      </span><span style="color:#0000ff">using</span><span style="color:#000000"> (</span><span style="color:#0000ff">var</span><span style="color:#000000"> context = </span><span style="color:#0000ff">new</span><span style="color:#000000"> </span><span style="color:#2b91af">RdvMedecinsContext</span><span style="color:#000000">())</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">      {</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#000000">// aquí tenemos un nuevo contexto vacío</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#000000">// se coloca «cliente1» en el contexto en estado eliminado</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#000000">        context.Entry(client1).State = </span><span style="color:#2b91af">EntityState</span><span style="color:#000000">.Deleted;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#000000">// guardamos el contexto</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        context.SaveChanges();</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">}</span></span>
+</code></pre></div>
+
+<p><span style="color: #000000">EF 5 se negó a eliminar </span><em>client1</em> <span style="color: #000000">de la base de datos, ya que </span><em>client1</em> <span style="color: #000000">(línea 6) no tenía la misma versión. No habíamos tenido este problema con MySQL. Poco a poco nos damos cuenta de que los conectores ADO.NET de diferentes SGBD presentan ligeras diferencias. Corregimos de la siguiente manera:</span></p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-csharp">
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">using</span> (<span style="color:#0000ff">var</span> context = <span style="color:#0000ff">new</span> <span style="color:#2b91af">RdvMedecinsContext</span>())</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">      {</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#000000">// aquí tenemos un nuevo contexto vacío</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#000000">// se agrega «cliente1» al contexto para eliminarlo</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        context.Clients.Remove(context.Clients.Find(client1.Id));</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        <span style="color:#000000">// se guarda el contexto</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">        context.SaveChanges();</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">      }</span></span>
+</code></pre></div>
+
+<p><span style="color: #000000">y ya funciona. </span></p>
+<p><span id="refheading39813804107930" name="refheading39813804107930" class="odt-bookmark-anchor"></span></p>
+<h2 id="53-arquitectura-multicapa-basada-en-ef-5">5.3. <span style="color: #4f81bd">Arquitectura multicapa basada en EF 5</span></h2>
+<p><span style="color: #000000">Volvemos a nuestro caso de estudio descrito en el párrafo</span><a href="--caso-de-estudio.html#etude-de-cas"><u><span style="color: #0563c1"> 2</span></u></a><span style="color: #000000">, página</span><a href="--caso-de-estudio.html#etude-de-cas"><u><span style="color: #0563c1"> 7</span></u></a><span style="color: #000000">.</span></p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000005E20000012737D4B496.png" width="680" height="133" style="display:inline-block; margin:4px;width:17.999cm;height:3.526cm;" class="odt-zoomable" data-zoom-src="images/10000000000005E20000012737D4B496.png" /></td></tr></table>
+
+<p><span style="color: #000000">Comenzaremos por construir la capa de acceso a datos [DAO]. Para ello, duplicamos el proyecto de consola VS 2012 [RdvMedecins-SqlServer-02] en [RdvMedecins-Oracle-02] [1]:</span></p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000005B500000313FD73794A.png" width="680" height="366" style="display:inline-block; margin:4px;width:17.999cm;height:9.694cm;" class="odt-zoomable" data-zoom-src="images/10000000000005B500000313FD73794A.png" /></td></tr></table>
+
+<ul>
+<li><span style="color: #000000">en [2], eliminamos el proyecto [RdvMedecins-SqlServer-02];</span></li>
+</ul>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000005E000000217D6286DD1.png" width="680" height="242" style="display:inline-block; margin:4px;width:17.999cm;height:6.403cm;" class="odt-zoomable" data-zoom-src="images/10000000000005E000000217D6286DD1.png" /></td></tr></table>
+
+<ul>
+<li><span style="color: #000000">en [3], se agrega un proyecto existente a la solución. Se toma de la carpeta [RdvMedecins-Oracle-02] que se acaba de crear;</span></li>
+<li><span style="color: #000000">en [4], el nuevo proyecto lleva el nombre del que se eliminó. Vamos a cambiarle el nombre;</span></li>
+</ul>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/100000000000054C00000129D8C214FE.png" width="678" height="149" style="display:inline-block; margin:4px;width:17.939cm;height:3.93cm;" class="odt-zoomable" data-zoom-src="images/100000000000054C00000129D8C214FE.png" /></td></tr></table>
+
+<ul>
+<li><span style="color: #000000">en [5], hemos cambiado el nombre del proyecto;</span></li>
+<li><span style="color: #000000">en [6], modificamos algunas de sus propiedades, como en este caso el nombre del ensamblado;</span></li>
+<li><span style="color: #000000">en [7], se elimina la carpeta [Models] para sustituirla por la carpeta [Models] del proyecto [RdvMedecins-Oracle-01]. De hecho, ambos proyectos comparten las mismas plantillas.</span></li>
+</ul>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000003070000014159B01D36.png" width="388" height="161" style="display:inline-block; margin:4px;width:10.253cm;height:4.247cm;" class="odt-zoomable" data-zoom-src="images/10000000000003070000014159B01D36.png" /></td></tr></table>
+
+<ul>
+<li><span style="color: #000000">en [8], las referencias actuales del proyecto;</span></li>
+<li><span style="color: #000000">en [9], se ha agregado el conector ADO.NET de Oracle con la herramienta NuGet.</span></li>
+</ul>
+<p><span style="color: #000000">En el archivo [App.config], se reemplaza la información de la base de datos SQL Server por la de la base de datos Oracle. Esta información se encuentra en el archivo [App.config] del proyecto [RdvMedecins-Oracle-01]:</span></p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-text">
+<span class="odt-code-line"><span class="odt-code-line-content">&lt;!-- cadena de conexión a la base de datos --&gt;</span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">  &lt;</span><span style="color:#a31515">connectionStrings</span><span style="color:#0000ff">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">    &lt;</span><span style="color:#a31515">add</span><span style="color:#0000ff"> </span><span style="color:#ff0000">name</span><span style="color:#0000ff">=</span><span style="color:#000000">&quot;</span><span style="color:#0000ff">monContexte</span><span style="color:#000000">&quot;</span><span style="color:#0000ff"> </span><span style="color:#ff0000">connectionString</span><span style="color:#0000ff">=</span><span style="color:#000000">&quot;</span><span style="color:#0000ff">Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=XE)));User Id=RDVMEDECINS-EF;Password=rdvmedecins;</span><span style="color:#000000">&quot;</span><span style="color:#0000ff"> </span><span style="color:#ff0000">providerName</span><span style="color:#0000ff">=</span><span style="color:#000000">&quot;</span><span style="color:#0000ff">Oracle.DataAccess.Client</span><span style="color:#000000">&quot;</span><span style="color:#0000ff"> /&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">  &lt;/</span><span style="color:#a31515">connectionStrings</span><span style="color:#0000ff">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content">  <span style="color:#0000ff">&lt;!-- el proveedor de fábrica --&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">  &lt;</span><span style="color:#a31515">system.data</span><span style="color:#0000ff">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">    &lt;</span><span style="color:#a31515">DbProviderFactories</span><span style="color:#0000ff">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">      &lt;</span><span style="color:#a31515">remove</span><span style="color:#0000ff"> </span><span style="color:#ff0000">invariant</span><span style="color:#0000ff">=</span><span style="color:#000000">&quot;</span><span style="color:#0000ff">Oracle.DataAccess.Client</span><span style="color:#000000">&quot;</span><span style="color:#0000ff"> /&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">      &lt;</span><span style="color:#a31515">add</span><span style="color:#0000ff"> </span><span style="color:#ff0000">name</span><span style="color:#0000ff">=</span><span style="color:#000000">&quot;</span><span style="color:#0000ff">Oracle Data Provider for .NET</span><span style="color:#000000">&quot;</span><span style="color:#0000ff"> </span><span style="color:#ff0000">invariant</span><span style="color:#0000ff">=</span><span style="color:#000000">&quot;</span><span style="color:#0000ff">Oracle.DataAccess.Client</span><span style="color:#000000">&quot;</span><span style="color:#0000ff"> </span><span style="color:#ff0000">description</span><span style="color:#0000ff">=</span><span style="color:#000000">&quot;</span><span style="color:#0000ff">Oracle Data Provider for .NET</span><span style="color:#000000">&quot;</span><span style="color:#0000ff"> </span><span style="color:#ff0000">type</span><span style="color:#0000ff">=</span><span style="color:#000000">&quot;</span><span style="color:#0000ff">Oracle.DataAccess.Client.OracleClientFactory, </span><span style="color:#0000ff">Oracle.DataAccess, Version=4.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342</span><span style="color:#000000">&quot;</span><span style="color:#0000ff"> /&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">    &lt;/</span><span style="color:#a31515">DbProviderFactories</span><span style="color:#0000ff">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">  &lt;/</span><span style="color:#a31515">system.data</span><span style="color:#0000ff">&gt;</span></span></span>
+</code></pre></div>
+
+<p><span style="color: #000000">Los objetos gestionados por Spring también cambian. Actualmente tenemos:</span></p>
+<div class="odt-code-rich" data-linenums="true" style="counter-reset: odtline 0;"><pre><code class="language-text">
+<span class="odt-code-line"><span class="odt-code-line-content">  <span style="color:#0000ff">&lt;!-- Configuración de Spring --&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">  &lt;</span><span style="color:#a31515">spring</span><span style="color:#0000ff">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">    &lt;</span><span style="color:#a31515">context</span><span style="color:#0000ff">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">      &lt;</span><span style="color:#a31515">resource</span><span style="color:#0000ff"> </span><span style="color:#ff0000">uri</span><span style="color:#0000ff">=</span><span style="color:#000000">&quot;</span><span style="color:#0000ff">config://spring/objects</span><span style="color:#000000">&quot;</span><span style="color:#0000ff"> /&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">    &lt;/</span><span style="color:#a31515">context</span><span style="color:#0000ff">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">    &lt;</span><span style="color:#a31515">objects</span><span style="color:#0000ff"> </span><span style="color:#ff0000">xmlns</span><span style="color:#0000ff">=</span><span style="color:#000000">&quot;</span><span style="color:#0000ff">http://www.springframework.net</span><span style="color:#000000">&quot;</span><span style="color:#0000ff">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">      &lt;</span><span style="color:#a31515">object</span><span style="color:#0000ff"> </span><span style="color:#ff0000">id</span><span style="color:#0000ff">=</span><span style="color:#000000">&quot;</span><span style="color:#0000ff">rdvmedecinsDao</span><span style="color:#000000">&quot;</span><span style="color:#0000ff"> </span><span style="color:#ff0000">type</span><span style="color:#0000ff">=</span><span style="color:#000000">&quot;</span><span style="color:#0000ff">RdvMedecins.Dao.Dao,RdvMedecins-SqlServer-02</span><span style="color:#000000">&quot;</span><span style="color:#0000ff"> /&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">    &lt;/</span><span style="color:#a31515">objects</span><span style="color:#0000ff">&gt;</span></span></span>
+<span class="odt-code-line"><span class="odt-code-line-content"><span style="color:#0000ff">&lt;/</span><span style="color:#a31515">spring</span><span style="color:#0000ff">&gt;</span></span></span>
+</code></pre></div>
+
+<p><span style="color: #000000">La línea 7 hace referencia al ensamblado del proyecto [RdvMedecins-SqlServer-02]. El ensamblado ahora es [RdvMedecins-Oracle-02].</span></p>
+<p><span style="color: #000000">Una vez hecho esto, estamos listos para ejecutar la prueba de la capa [DAO]. Antes hay que asegurarse de llenar la base de datos (programa [Fill] del proyecto [RdvMedecins-Oracle-01]). La prueba se ejecuta con éxito.</span></p>
+<p><span style="color: #000000">Creamos el DLL del proyecto tal como se hizo para el proyecto [RdvMedecins-SqlServer-02] y reunimos eltodos los archivos DLL del proyecto en una carpeta [lib] creada en [RdvMedecins-Oracle-02]. Estas serán las referencias del proyecto web [RdvMedecins-Oracle-03] que se presentará a continuación.</span></p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/1000000000000109000000D81CC53409.png" width="186" height="151" style="display:inline-block; margin:4px;width:4.911cm;height:4.001cm;" class="odt-zoomable" data-zoom-src="images/1000000000000109000000D81CC53409.png" /></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;">&nbsp;</td></tr></table>
+
+<p><span style="color: #000000">Ahora estamos listos para construir la capa [ASP.NET] de nuestra aplicación:</span></p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000005EF00000123C078CDE9.png" width="680" height="130" style="display:inline-block; margin:4px;width:17.999cm;height:3.448cm;" class="odt-zoomable" data-zoom-src="images/10000000000005EF00000123C078CDE9.png" /></td></tr></table>
+
+<p><span style="color: #000000">Partiremos del proyecto [RdvMedecins-SqlServer-03]. Duplicamos la carpeta de este proyecto en [RdvMedecins-Oracle-03] y [1]:</span></p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000005B500000193A8B44184.png" width="680" height="188" style="display:inline-block; margin:4px;width:17.999cm;height:4.964cm;" class="odt-zoomable" data-zoom-src="images/10000000000005B500000193A8B44184.png" /></td></tr></table>
+
+<ul>
+<li><span style="color: #000000">en [2], con VS 2012 Express para la web, abrimos la solución de la carpeta [RdvMedecins-Oracle-03];</span></li>
+<li><span style="color: #000000">en [3], cambiamos tanto el nombre de la solución como el del proyecto;</span></li>
+</ul>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><img src="images/10000000000005A700000179789555CC.png" width="680" height="177" style="display:inline-block; margin:4px;width:17.999cm;height:4.688cm;" class="odt-zoomable" data-zoom-src="images/10000000000005A700000179789555CC.png" /></td></tr></table>
+
+<ul>
+<li><span style="color: #000000">en [4], las referencias actuales del proyecto;</span></li>
+<li><span style="color: #000000">en [5], las eliminamos;</span></li>
+<li><span style="color: #000000">a [6], para reemplazarlas por referencias a DLL, que acabamos de guardar en una carpeta [lib] del proyecto [RdvMedecins-Oracle-02].</span></li>
+</ul>
+<p><span style="color: #000000">Ahora solo nos queda modificar el archivo [Web.config]. Reemplazamos su contenido actual por el contenido del archivo [App.config] del proyecto [RdvMedecins-Oracle-02]. Una vez hecho esto, ejecutamos el proyecto web. Funciona. No olvidemos llenar la base de datos antes de ejecutar la aplicación web.</span></p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner">
+
+      <div>
+        <a href="https://stahe.github.io" target="_blank">
+          https://stahe.github.io
+        </a>
+        <br>
+        Este tutorial, escrito por <strong>Serge Tahé</strong>, se pone a disposición del público de acuerdo con los términos de la
+        <em>Licencia Creative Commons Reconocimiento – Sin uso comercial –
+        Compartir bajo los mismos términos 3.0 sin modificaciones</em>.
+
+      </div>
+
+    </div>
+  </div>
+
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.indexes", "navigation.expand", "toc.integrate", "navigation.top"], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="javascripts/focus.js"></script>
+      
+    
+  </body>
+</html>
